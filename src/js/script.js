@@ -73,7 +73,7 @@ async function fetchJsonData(url) {
 // dynamically build html needed for card components
 function generateCardHTML(imagePath, name, description, isActive, i) {
   const cardHTML = `<div
-              class="card flex flex-col rounded-2xl bg-neutral0 p-5 justify-between space-y-12 outline outline-1 outline-neutral200 shadow-md dark:bg-neutral900 dark:outline-neutral600" data-id="${i}" data-state="${
+              class="card flex flex-col rounded-2xl bg-neutral0 p-5 justify-between space-y-12 outline outline-1 outline-neutral200 shadow-md dark:bg-neutral800 dark:outline-neutral600" data-id="${i}" data-state="${
     isActive ? "active" : "inactive"
   }"
             >
@@ -93,7 +93,7 @@ function generateCardHTML(imagePath, name, description, isActive, i) {
 
               <div class="flex flex-row items-center justify-between">
                 <button
-                  class="rounded-full text-preset-6 text-neutral900 px-4 py-2 outline outline-1 outline-neutral200 dark:text-neutral0"
+                  class="rounded-full text-preset-6 text-neutral900 px-4 py-2 outline outline-1 outline-neutral200 hover:bg-red700 hover:text-neutral0 hover:outline-none dark:text-neutral0 dark:outline-neutral600 hover:dark:text-neutral900 hover:dark:outline-none"
                 >
                   Remove
                 </button>

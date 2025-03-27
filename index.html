@@ -94,14 +94,15 @@
 
       <!-- Extensions Header & Buttons Section -->
       <section id="extensionButtonSection">
-        <div class="flex flex-col space-y-6">
-          <h1 class="text-preset-1 text-neutral900 mx-auto dark:text-neutral0">
+        <div
+          class="flex flex-col space-y-6 container mx-auto md:flex-row md:space-y-0 md:items-center md:justify-between"
+        >
+          <h1
+            class="text-preset-1 text-neutral900 text-center dark:text-neutral0"
+          >
             Extensions List
           </h1>
-          <div
-            id="filters"
-            class="container text-center block space-x-2 mx-auto"
-          >
+          <div id="filters" class="text-center space-x-2">
             <button
               id="filter-all"
               class="rounded-full px-5 py-2 bg-neutral0 shadow-md outline outline-1 outline-neutral200 text-preset-3 dark:bg-neutral700 dark:outline-neutral600"
@@ -127,10 +128,13 @@
       <!-- Extension Card List Section -->
       <section id="extensionSection">
         <div class="container mx-auto">
-          <div id="component-grid" class="grid grid-rows-1 grid-cols-1 gap-4">
+          <div
+            id="component-grid"
+            class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3"
+          >
             <!-- Card 1 -->
-            <!-- <div
-              class="card flex flex-col rounded-2xl bg-neutral0 p-5 justify-between space-y-12 outline outline-1 outline-neutral200 shadow-md dark:bg-neutral900 dark:outline-neutral600"
+            <div
+              class="card flex flex-col rounded-2xl bg-neutral0 p-5 justify-between space-y-12 outline outline-1 outline-neutral200 shadow-md dark:bg-neutral800 dark:outline-neutral600"
             >
               <div class="flex flex-row space-x-5">
                 <img
@@ -153,7 +157,7 @@
 
               <div class="flex flex-row items-center justify-between">
                 <button
-                  class="rounded-full text-preset-6 text-neutral900 px-4 py-2 outline outline-1 outline-neutral200 dark:text-neutral0"
+                  class="rounded-full text-preset-6 text-neutral900 px-4 py-2 outline outline-1 outline-neutral200 hover:bg-red700 hover:text-neutral0 hover:outline-none dark:text-neutral0 dark:outline-neutral600 hover:dark:text-neutral900 hover:dark:outline-none"
                 >
                   Remove
                 </button>
@@ -166,7 +170,7 @@
                   ></span>
                 </button>
               </div>
-            </div> -->
+            </div>
           </div>
         </div>
       </section>
