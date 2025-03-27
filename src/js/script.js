@@ -37,45 +37,6 @@ async function fetchJsonData(url) {
 
 // dynamically build html needed for card components
 function generateCardHTML(imagePath, name, description, isActive, i) {
-  if (isActive === true) {
-    const cardHTML = `<div
-              class="card flex flex-col rounded-2xl bg-neutral0 p-5 justify-between space-y-12 outline outline-1 outline-neutral200 shadow-md" data-id="${i}" data-state="${
-      isActive ? "active" : "inactive"
-    }"
-            >
-              <div class="flex flex-row space-x-5">
-                <img
-                  src="${imagePath}"
-                  alt=""
-                  class="w-auto h-auto"
-                />
-                <div>
-                  <h2 class="text-preset-2 mb-3">${name}</h2>
-                  <div class="text-left text-preset-5 text-neutral600">
-                  ${description}
-                  </div>
-                </div>
-              </div>
-
-              <div class="flex flex-row items-center justify-between">
-                <button
-                  class="rounded-full text-preset-6 text-neutral900 px-4 py-2 outline outline-1 outline-neutral200"
-                >
-                  Remove
-                </button>
-
-                <button
-                  class="toggle-btn w-[2.25rem] h-[1.25rem] rounded-full bg-neutral300 transition-all duration-300 flex items-center px-[0.15rem] bg-red700" 
-                >
-                  <span
-                    class="toggle-btn-circle left-1 w-4 h-4 bg-white rounded-full transition-all duration-300 translate-x-4"
-                  ></span>
-                </button>
-              </div>
-            </div>`;
-    return cardHTML;
-  }
-
   const cardHTML = `<div
               class="card flex flex-col rounded-2xl bg-neutral0 p-5 justify-between space-y-12 outline outline-1 outline-neutral200 shadow-md" data-id="${i}" data-state="${
     isActive ? "active" : "inactive"
@@ -103,10 +64,14 @@ function generateCardHTML(imagePath, name, description, isActive, i) {
                 </button>
 
                 <button
-                  class="toggle-btn w-[2.25rem] h-[1.25rem] rounded-full bg-neutral300 transition-all duration-300 flex items-center px-[0.15rem] " 
+                  class="toggle-btn w-[2.25rem] h-[1.25rem] rounded-full bg-neutral300 transition-all duration-300 flex items-center px-[0.15rem] ${
+                    isActive ? "bg-red700" : null
+                  }" 
                 >
                   <span
-                    class="toggle-btn-circle left-1 w-4 h-4 bg-white rounded-full transition-all duration-300 "
+                    class="toggle-btn-circle left-1 w-4 h-4 bg-white rounded-full transition-all duration-300 ${
+                      isActive ? "translate-x-4" : null
+                    }"
                   ></span>
                 </button>
               </div>
