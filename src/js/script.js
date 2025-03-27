@@ -117,7 +117,7 @@ function generateCardHTML(imagePath, name, description, isActive, i) {
 // dynamically build card components
 async function generateCardComponents() {
   try {
-    const data = await fetchJsonData("../../data.json");
+    const data = await fetchJsonData("/data.json");
 
     let HTML = "";
     for (let i = 0; i < data.length; i++) {
