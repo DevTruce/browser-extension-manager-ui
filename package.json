@@ -1,0 +1,16 @@
+{
+  "name": "browser-extension",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "tailwindcss -i ./src/css/input.css -o ./src/css/output.css",
+    "watch": "tailwindcss -i ./src/css/input.css -o ./src/css/output.css --watch"
+  },
+  "keywords": [],
+  "author": "Truce R",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}

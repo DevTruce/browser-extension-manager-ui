@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="src/images/favicon-32x32.png"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./src/css/output.css" />
+
+    <script defer src="./src/js/script.js"></script>
+
+    <title>Browser Extensions Manager</title>
+  </head>
+  <body
+    class="h-screen text-neutral900 bg-lightGradient dark:text-neutral0 dark:bg-darkGradient"
+  >
+    <main class="flex flex-col p-4 space-y-8">
+      <!-- Header Bar -->
+      <section id="searchSection">
+        <div
+          class="container mx-auto flex flex-row justify-between rounded-lg w-full px-3 py-2 bg-neutral0 outline outline-1 outline-neutral200 shadow-md"
+        >
+          <img src="./src/images/logo.svg" alt="" />
+
+          <button class="p-3 bg-neutral100 rounded-lg">
+            <img src="./src/images/icon-moon.svg" alt="" />
+          </button>
+        </div>
+      </section>
+
+      <!-- Extensions Header & Buttons Section -->
+      <section id="extensionButtonSection">
+        <div class="flex flex-col space-y-6">
+          <h1 class="text-preset-1 text-neutral900 mx-auto">Extensions List</h1>
+          <div
+            id="filters"
+            class="container text-center block space-x-2 mx-auto"
+          >
+            <button
+              id="filterAll"
+              class="rounded-full px-5 py-2 bg-neutral0 shadow-md outline outline-1 outline-neutral200"
+            >
+              All
+            </button>
+            <button
+              id="filterActive"
+              class="rounded-full px-5 py-2 outline outline-1 outline-neutral200 bg-neutral0 shadow-md"
+            >
+              Active
+            </button>
+            <button
+              id="filterInactive"
+              class="rounded-full px-5 py-2 outline outline-1 outline-neutral200 bg-neutral0 shadow-md"
+            >
+              Inactive
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Extension Card List Section -->
+      <section id="extensionSection">
+        <div class="container mx-auto">
+          <div id="componentGrid" class="grid grid-rows-1 grid-cols-1 gap-4">
+            <!-- Card 1 -->
+            <!-- <div
+              class="card flex flex-col rounded-2xl bg-neutral0 p-5 justify-between space-y-12 outline outline-1 outline-neutral200 shadow-md"
+            >
+              <div class="flex flex-row space-x-5">
+                <img
+                  src="./src/images/logo-devlens.svg"
+                  alt=""
+                  class="w-auto h-auto"
+                />
+                <div>
+                  <h2 class="text-preset-2 mb-3">Deadpool</h2>
+                  <div class="text-left text-preset-5 text-neutral600">
+                    Quickly inspect page layouts and visualize element
+                    boundaries
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex flex-row items-center justify-between">
+                <button
+                  class="rounded-full text-preset-6 text-neutral900 px-4 py-2 outline outline-1 outline-neutral200"
+                >
+                  Remove
+                </button>
+
+                <button
+                  class="toggle-btn w-[2.25rem] h-[1.25rem] rounded-full bg-neutral300 transition-all duration-300 flex items-center px-[0.15rem]"
+                >
+                  <span
+                    class="toggle-btn-circle left-1 w-4 h-4 bg-white rounded-full transition-all duration-300"
+                  ></span>
+                </button>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
