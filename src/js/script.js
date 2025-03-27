@@ -191,14 +191,17 @@ function filterUpdatesUI(state) {
     // show all filters
     updateHtmlCardState("all");
     states.filterState = "all";
+    return;
   }
   if (state === "active") {
     updateHtmlCardState("active");
     states.filterState = "active";
+    return;
   }
   if (state === "inactive") {
     updateHtmlCardState("inactive");
     states.filterState = "inactive";
+    return;
   }
 }
 
@@ -223,13 +226,15 @@ filters.addEventListener("click", function (e) {
 componentGrid.addEventListener("click", function (e) {
   if (e.target.classList.contains("toggle-btn")) {
     toggleCardButton(e, "button");
+    filterUpdatesUI(states.filterState);
+    return;
   }
 
   if (e.target.classList.contains("toggle-btn-circle")) {
     toggleCardButton(e, "circle");
+    filterUpdatesUI(states.filterState);
+    return;
   }
-
-  filterUpdatesUI(states.filterState);
 });
 
 // ONLOAD
