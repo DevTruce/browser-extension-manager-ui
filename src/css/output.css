@@ -742,14 +742,6 @@ video {
   margin-bottom: calc(2rem * var(--tw-space-y-reverse));
 }
 
-.overflow-auto {
-  overflow: auto;
-}
-
-.overflow-hidden {
-  overflow: hidden;
-}
-
 .overflow-scroll {
   overflow: scroll;
 }
@@ -803,16 +795,8 @@ video {
   padding: 0.75rem;
 }
 
-.p-4 {
-  padding: 1rem;
-}
-
 .p-5 {
   padding: 1.25rem;
-}
-
-.p-44 {
-  padding: 11rem;
 }
 
 .px-16 {
@@ -845,19 +829,8 @@ video {
   padding-bottom: 0.5rem;
 }
 
-.px-36 {
-  padding-left: 9rem;
-  padding-right: 9rem;
-}
-
-.px-\[8\.4rem\] {
-  padding-left: 8.4rem;
-  padding-right: 8.4rem;
-}
-
-.py-10 {
-  padding-top: 2.5rem;
-  padding-bottom: 2.5rem;
+.pb-16 {
+  padding-bottom: 4rem;
 }
 
 .pb-6 {
@@ -866,10 +839,6 @@ video {
 
 .pt-5 {
   padding-top: 1.25rem;
-}
-
-.pb-16 {
-  padding-bottom: 4rem;
 }
 
 .pt-6 {
@@ -1132,10 +1101,5 @@ video {
   .xl\:px-\[8\.4rem\] {
     padding-left: 8.4rem;
     padding-right: 8.4rem;
-  }
-
-  .xl\:py-10 {
-    padding-top: 2.5rem;
-    padding-bottom: 2.5rem;
   }
 }
