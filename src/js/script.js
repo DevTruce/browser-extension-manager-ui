@@ -304,6 +304,7 @@ componentGrid.addEventListener('click', function (e) {
       'Removal of data is not permitted'
     );
     showPopupAlert();
+    return;
   }
 });
 function genereatePopupContent(iconPath, title, text) {
