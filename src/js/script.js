@@ -24,9 +24,8 @@ const moonSvgPath =
 
 let states = {
   filterState: 'all',
+  theme: '',
 };
-
-console.log(themeToggleImg);
 
 // HELPER FUNCTIONS
 function toggleThemeMode() {
@@ -37,10 +36,12 @@ function toggleThemeMode() {
       document.documentElement.classList.add('dark');
       localStorage.setItem('color-theme', 'dark');
       themeToggleImg.setAttribute('d', sunSvgPath);
+      states.theme = 'dark';
     } else {
       document.documentElement.classList.remove('dark');
       localStorage.setItem('color-theme', 'light');
       themeToggleImg.setAttribute('d', moonSvgPath);
+      states.theme = 'light';
     }
   } else {
     // if not in localStorage
@@ -48,12 +49,16 @@ function toggleThemeMode() {
       document.documentElement.classList.remove('dark');
       localStorage.setItem('color-theme', 'light');
       themeToggleImg.setAttribute('d', moonSvgPath);
+      states.theme = 'light';
     } else {
       document.documentElement.classList.add('dark');
       localStorage.setItem('color-theme', 'dark');
       themeToggleImg.setAttribute('d', sunSvgPath);
+      states.theme = 'dark';
     }
   }
+
+  filterUpdatesUI(states.filterState);
 }
 
 async function fetchJsonData(url) {
@@ -101,7 +106,7 @@ function generateCardHTML(imagePath, name, description, isActive, i) {
 
               <div class="flex flex-row items-center justify-between">
                 <button
-                  class="remove-btn rounded-full text-preset-6 text-neutral900 px-4 py-2 outline outline-1 outline-neutral200 hover:bg-red700 hover:text-neutral0 hover:outline-none dark:text-neutral0 dark:outline-neutral600 hover:dark:text-neutral900 hover:dark:outline-none"
+                  class="remove-btn rounded-full text-preset-6 text-neutral900 px-4 py-2 outline outline-1 outline-neutral200 hover:bg-red700 hover:text-neutral0 hover:outline-none dark:text-neutral0 dark:outline-neutral600 hover:dark:text-neutral900 hover:dark:bg-red400 hover:dark:outline-none"
                 >
                   Remove
                 </button>
@@ -109,7 +114,7 @@ function generateCardHTML(imagePath, name, description, isActive, i) {
                 <button
                   class="toggle-btn w-[2.25rem] h-[1.25rem] rounded-full bg-neutral300 transition-all duration-300 flex items-center px-[0.15rem] ${
                     isActive ? 'bg-red700' : null
-                  }" 
+                  } ${isActive ? 'dark:bg-red400' : null}" 
                 >
                   <span
                     class="toggle-btn-circle left-1 w-4 h-4 bg-white rounded-full transition-all duration-300 ${
@@ -145,7 +150,7 @@ async function generateCardComponents() {
   }
 }
 
-function toggleCardButton(target, type) {
+function toggleCardButton(theme, target, type) {
   let circle;
   let button;
 
@@ -160,8 +165,14 @@ function toggleCardButton(target, type) {
   }
 
   // styling
-  button.classList.toggle('bg-red700');
-  circle.classList.toggle('translate-x-4');
+  if (theme === 'dark') {
+    button.classList.toggle('bg-red700');
+    button.classList.toggle('dark:bg-red400');
+    circle.classList.toggle('translate-x-4');
+  } else {
+    button.classList.toggle('bg-red700');
+    circle.classList.toggle('translate-x-4');
+  }
 
   // update active/inactive states
   const card = button.closest('[data-id]');
@@ -222,6 +233,8 @@ function filterUpdatesUI(state) {
   const isThemeDark = document.documentElement.classList.contains('dark');
 
   let target;
+
+  if (!state) state = 'all';
   state === 'active' ? (target = filterActive) : (target = filterInactive);
   if (state === 'all') target = filterAll;
 
@@ -231,20 +244,26 @@ function filterUpdatesUI(state) {
       filter.classList.remove(
         'dark:bg-red400',
         'dark:text-neutral900',
-        'text-preset-1'
+        'text-preset-4'
       );
+
+      filter.classList.add('outline');
     });
 
     target.classList.add(
       'dark:bg-red400',
       'dark:text-neutral900',
-      'text-preset-1'
+      'text-preset-4'
     );
+
+    target.classList.remove('outline');
   } else {
     filtersArray.forEach(filter => {
-      filter.classList.remove('bg-red700', 'text-neutral0', 'text-preset-1');
+      filter.classList.remove('bg-red700', 'text-neutral0', 'text-preset-4');
+      filter.classList.add('outline');
     });
-    target.classList.add('bg-red700', 'text-neutral0', 'text-preset-1');
+    target.classList.add('bg-red700', 'text-neutral0', 'text-preset-4');
+    target.classList.remove('outline');
   }
 
   // update ui
@@ -319,13 +338,13 @@ filters.addEventListener('click', function (e) {
 // Handle Component Grid Card Events (remove / toggle btn)
 componentGrid.addEventListener('click', function (e) {
   if (e.target.classList.contains('toggle-btn')) {
-    toggleCardButton(e.target, 'button');
+    toggleCardButton(states.theme, e.target, 'button');
     filterUpdatesUI(states.filterState);
     return;
   }
 
   if (e.target.classList.contains('toggle-btn-circle')) {
-    toggleCardButton(e.target, 'circle');
+    toggleCardButton(states.theme, e.target, 'circle');
     filterUpdatesUI(states.filterState);
     return;
   }
