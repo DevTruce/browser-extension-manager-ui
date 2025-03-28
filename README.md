@@ -21,7 +21,7 @@
     completed frontend mentor challenge
     <br />
     <br />
-    <a href="https://devtruce.github.io/browser-extension-manager-ui/" target="_blank">View Demo</a>
+    <a href="https://devtruce-browser-extension.netlify.app//" target="_blank">View Demo</a>
   </p>
 </div>
 
