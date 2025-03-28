@@ -20,13 +20,13 @@
 
     <script>
       if (
-        localStorage.theme === 'dark' ||
-        (!('theme' in localStorage) &&
-          window.matchMedia('(prefers-color-scheme: dark)').matches)
+        localStorage.getItem("color-theme") === "dark" ||
+        (!("color-theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
       ) {
-        document.documentElement.classList.add('dark');
+        document.documentElement.classList.add("dark");
       } else {
-        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.remove("dark");
       }
     </script>
 
@@ -64,7 +64,7 @@
 
     <main
       id="main"
-      class="hidden flex flex-col px-4 pt-6 pb-16 md:px-8 xl:px-[8.4rem]"
+      class="flex flex-col px-4 pt-6 pb-16 md:px-8 xl:px-[8.4rem]"
     >
       <!-- Header Bar -->
       <section id="searchSection">
@@ -158,7 +158,7 @@
         <div class="container mx-auto">
           <div
             id="component-grid"
-            class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3"
+            class="opacity-0 duration-300 ease-in transition-opacity grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3"
           >
             <!-- !Alert Do not touch -->
             <!-- Card 1 -->
