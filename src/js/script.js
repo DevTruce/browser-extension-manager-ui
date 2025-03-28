@@ -26,11 +26,9 @@ let states = {
   filterState: "all",
   theme: "",
 };
-console.log("init: " + states.theme);
 
 // HELPER FUNCTIONS
 function toggleThemeMode() {
-  console.log("before:" + states.theme);
   // If is set in localStorage
   if (localStorage.getItem("color-theme")) {
     // if light, make dark and save in localStorage
@@ -60,7 +58,42 @@ function toggleThemeMode() {
     }
   }
 
-  console.log("after:" + states.theme);
+  // styling
+  Array.from(cards).forEach(card => {
+    const button = card.querySelector(".toggle-btn");
+
+    // dark mode
+    if (
+      states.theme === "dark" &&
+      card.getAttribute("data-state") === "active"
+    ) {
+      button.classList.remove("bg-red700");
+      button.classList.add("bg-red400");
+    } else if (
+      states.theme === "dark" &&
+      card.getAttribute("data-state") !== "active"
+    ) {
+      button.classList.remove("bg-red400");
+      button.classList.remove("bg-red700");
+      button.classList.add("bg-neutral300");
+    }
+
+    // light mode
+    if (
+      states.theme !== "dark" &&
+      card.getAttribute("data-state") === "active"
+    ) {
+      button.classList.remove("bg-red400");
+      button.classList.add("bg-red700");
+    } else if (
+      states.theme !== "dark" &&
+      card.getAttribute("data-state") !== "active"
+    ) {
+      button.classList.remove("bg-red400");
+      button.classList.remove("bg-red700");
+      button.classList.add("bg-neutral300");
+    }
+  });
 
   filterUpdatesUI(states.filterState);
 }
@@ -89,7 +122,7 @@ async function fetchJsonData(url) {
 
 // dynamically build html needed for card components
 function generateCardHTML(imagePath, name, description, isActive, i) {
-  console.log("generateCardHTML: " + states.theme);
+  console.log(states.theme);
   const cardHTML = `<div
               class="card flex flex-col rounded-2xl bg-neutral0 p-5 justify-between space-y-12 outline outline-1 outline-neutral200 shadow-md overflow-scroll dark:bg-neutral800 dark:outline-neutral600" data-id="${i}" data-state="${
     isActive ? "active" : "inactive"
@@ -118,8 +151,8 @@ function generateCardHTML(imagePath, name, description, isActive, i) {
 
                 <button
                   class="toggle-btn w-[2.25rem] h-[1.25rem] rounded-full bg-neutral300 transition-all duration-300 flex items-center px-[0.15rem] ${
-                    isActive ? "bg-red700" : ""
-                  } " 
+                    isActive && states.theme === "light" ? "bg-red700" : ""
+                  } ${isActive && states.theme === "dark" ? "bg-red400" : ""} " 
                 >
                   <span
                     class="toggle-btn-circle left-1 w-4 h-4 bg-white rounded-full transition-all duration-300 ${
@@ -169,20 +202,35 @@ function toggleCardButton(theme, target, type) {
     circle = button.querySelector("span");
   }
 
+  const card = button.closest("[data-id]");
+  const id = card ? card.getAttribute("data-id") : null;
+  const storedData = JSON.parse(localStorage.getItem("userData"));
+
   // styling
-  if (theme === "dark") {
-    // button.classList.toggle("bg-red700");
-    button.classList.toggle("bg-red700");
+  if (theme === "dark" && card.getAttribute("data-state") === "active") {
+    button.classList.remove("bg-red700");
+    button.classList.remove("bg-red400");
     circle.classList.toggle("translate-x-4");
-  } else {
+  } else if (theme === "dark" && card.getAttribute("data-state") !== "active") {
+    button.classList.toggle("bg-red400");
+    circle.classList.toggle("translate-x-4");
+  }
+
+  if (theme !== "dark" && card.getAttribute("data-state") === "active") {
+    button.classList.remove("bg-red400");
+    button.classList.remove("bg-red700");
+    circle.classList.toggle("translate-x-4");
+  } else if (theme !== "dark" && card.getAttribute("data-state") !== "active") {
     button.classList.toggle("bg-red700");
     circle.classList.toggle("translate-x-4");
   }
 
+  // else {
+  //   button.classList.toggle("bg-red700");
+  //   circle.classList.toggle("translate-x-4");
+  // }
+
   // update active/inactive states
-  const card = button.closest("[data-id]");
-  const id = card ? card.getAttribute("data-id") : null;
-  const storedData = JSON.parse(localStorage.getItem("userData"));
 
   if (id === null) return;
 
