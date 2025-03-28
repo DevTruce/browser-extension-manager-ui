@@ -203,8 +203,6 @@ function toggleCardButton(theme, target, type) {
   }
 
   const card = button.closest("[data-id]");
-  const id = card ? card.getAttribute("data-id") : null;
-  const storedData = JSON.parse(localStorage.getItem("userData"));
 
   // styling
   if (theme === "dark" && card.getAttribute("data-state") === "active") {
@@ -225,12 +223,9 @@ function toggleCardButton(theme, target, type) {
     circle.classList.toggle("translate-x-4");
   }
 
-  // else {
-  //   button.classList.toggle("bg-red700");
-  //   circle.classList.toggle("translate-x-4");
-  // }
-
   // update active/inactive states
+  const id = card ? card.getAttribute("data-id") : null;
+  const storedData = JSON.parse(localStorage.getItem("userData"));
 
   if (id === null) return;
 
@@ -401,13 +396,17 @@ filters.addEventListener("click", function (e) {
 componentGrid.addEventListener("click", function (e) {
   if (e.target.classList.contains("toggle-btn")) {
     toggleCardButton(states.theme, e.target, "button");
-    filterUpdatesUI(states.filterState);
+    setTimeout(() => {
+      filterUpdatesUI(states.filterState);
+    }, 400);
     return;
   }
 
   if (e.target.classList.contains("toggle-btn-circle")) {
     toggleCardButton(states.theme, e.target, "circle");
-    filterUpdatesUI(states.filterState);
+    setTimeout(() => {
+      filterUpdatesUI(states.filterState);
+    }, 400);
     return;
   }
 
