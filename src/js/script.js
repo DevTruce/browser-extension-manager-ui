@@ -290,8 +290,11 @@ function hidePopupAlert() {
 }
 
 // ONLOAD
-generateCardComponents();
-filterUpdatesUI(states.filterState);
+window.onload = async states => {
+  await generateCardComponents();
+  filterUpdatesUI(states.filterState);
+  main.classList.toggle('hidden');
+};
 
 // EVENT LISTENTERS
 // Toggle Dark/Light Mode

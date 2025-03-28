@@ -785,7 +785,7 @@ video {
 
 .bg-red700 {
   --tw-bg-opacity: 1;
-  background-color: hsl(3 86% 64% / var(--tw-bg-opacity, 1));
+  background-color: hsl(3 77% 44% / var(--tw-bg-opacity, 1));
 }
 
 .bg-white {
@@ -911,7 +911,11 @@ video {
 }
 
 .outline-red400 {
-  outline-color: hsl(3, 77%, 44%);
+  outline-color: hsl(3, 86%, 64%);
+}
+
+.outline-transparent {
+  outline-color: transparent;
 }
 
 .filter {
@@ -988,7 +992,7 @@ video {
 
 .hover\:bg-red700:hover {
   --tw-bg-opacity: 1;
-  background-color: hsl(3 86% 64% / var(--tw-bg-opacity, 1));
+  background-color: hsl(3 77% 44% / var(--tw-bg-opacity, 1));
 }
 
 .hover\:text-neutral0:hover {
@@ -1013,7 +1017,7 @@ video {
 
 .dark\:bg-red400:is(.dark *) {
   --tw-bg-opacity: 1;
-  background-color: hsl(3 77% 44% / var(--tw-bg-opacity, 1));
+  background-color: hsl(3 86% 64% / var(--tw-bg-opacity, 1));
 }
 
 .dark\:bg-darkGradient:is(.dark *) {
@@ -1050,6 +1054,15 @@ video {
 
 .dark\:outline-neutral600:is(.dark *) {
   outline-color: hsl(226, 11%, 37%);
+}
+
+.dark\:outline-transparent:is(.dark *) {
+  outline-color: transparent;
+}
+
+.dark\:hover\:bg-neutral600:hover:is(.dark *) {
+  --tw-bg-opacity: 1;
+  background-color: hsl(226 11% 37% / var(--tw-bg-opacity, 1));
 }
 
 .hover\:dark\:text-neutral900:is(.dark *):hover {
