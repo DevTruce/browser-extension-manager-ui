@@ -266,7 +266,37 @@ function filterUpdatesUI(state) {
   }
 }
 
-// EVENT LISTENERS
+function genereatePopupContent(iconPath, title, text) {
+  popupAlertIcon.setAttribute('src', iconPath);
+  popupAlertTitle.textContent = title;
+  popupAlertMsg.textContent = text;
+}
+
+function showPopupAlert() {
+  main.classList.toggle('opacity-50');
+  popupAlertSection.classList.toggle('hidden');
+  popupAlert.classList.toggle('hidden');
+  popupAlert.classList.remove('opacity-0');
+  popupAlert.classList.add('opacity-100');
+}
+
+function hidePopupAlert() {
+  if (!popupAlert.classList.contains('opacity-0')) {
+    popupAlert.classList.add('opacity-0');
+    popupAlert.classList.toggle('hidden');
+    popupAlertSection.classList.toggle('hidden');
+    main.classList.toggle('opacity-50');
+  }
+}
+
+// ONLOAD
+generateCardComponents();
+filterUpdatesUI(states.filterState);
+
+// EVENT LISTENTERS
+// Toggle Dark/Light Mode
+themeToggleBtn.addEventListener('click', toggleThemeMode);
+
 // Set Correct Filter State
 filters.addEventListener('click', function (e) {
   if (
@@ -307,37 +337,10 @@ componentGrid.addEventListener('click', function (e) {
     return;
   }
 });
-function genereatePopupContent(iconPath, title, text) {
-  popupAlertIcon.setAttribute('src', iconPath);
-  popupAlertTitle.textContent = title;
-  popupAlertMsg.textContent = text;
-}
 
-function showPopupAlert() {
-  main.classList.toggle('opacity-50');
-  popupAlertSection.classList.toggle('hidden');
-  popupAlert.classList.toggle('hidden');
-  popupAlert.classList.remove('opacity-0');
-  popupAlert.classList.add('opacity-100');
-}
-
-function hidePopupAlert() {
-  if (!popupAlert.classList.contains('opacity-0')) {
-    popupAlert.classList.add('opacity-0');
-    popupAlert.classList.toggle('hidden');
-    popupAlertSection.classList.toggle('hidden');
-    main.classList.toggle('opacity-50');
-  }
-}
-
-themeToggleBtn.addEventListener('click', toggleThemeMode);
-
+// Handle Closing Alert Popup
 popupAlertSection.addEventListener('click', e => {
   if (e.target === popupAlertSection) {
     hidePopupAlert();
   }
 });
-
-// ONLOAD
-generateCardComponents();
-filterUpdatesUI(states.filterState);
