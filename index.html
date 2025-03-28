@@ -20,13 +20,13 @@
 
     <script>
       if (
-        localStorage.theme === "dark" ||
-        (!("theme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
+        localStorage.theme === 'dark' ||
+        (!('theme' in localStorage) &&
+          window.matchMedia('(prefers-color-scheme: dark)').matches)
       ) {
-        document.documentElement.classList.add("dark");
+        document.documentElement.classList.add('dark');
       } else {
-        document.documentElement.classList.remove("dark");
+        document.documentElement.classList.remove('dark');
       }
     </script>
 
@@ -37,7 +37,32 @@
   <body
     class="text-neutral900 bg-lightGradient dark:text-neutral0 dark:bg-darkGradient"
   >
-    <main class="flex flex-col p-4 space-y-8">
+    <section id="popup-alert-section" class="fixed inset-0 hidden z-50">
+      <div
+        id="popup-alert"
+        class="hidden fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 container mx-auto flex flex-col space-y-3 justify-center items-center rounded-lg px-5 py-5 bg-neutral0 outline outline-1 outline-red400 shadow-2xl duration-300 ease-in opacity-0 transition-opacity dark:bg-neutral800"
+      >
+        <div class="flex space-x-2 items-center justify-center">
+          <img
+            id="popup-alert-icon"
+            src="./src/images/exclamation-warning-round-red-icon.svg"
+            alt=""
+            class="w-10 h-10 md:w-14 md:h-14 xl:w-18 xl:h-18"
+          />
+          <h2 id="popup-alert-title" class="text-preset-2 dark:text-neutral0">
+            Alert Title
+          </h2>
+        </div>
+        <div
+          id="popup-alert-message"
+          class="text-preset-5 text-neutral600 dark:text-neutral300"
+        >
+          alert message here
+        </div>
+      </div>
+    </section>
+
+    <main id="main" class="flex flex-col p-4 space-y-8">
       <!-- Header Bar -->
       <section id="searchSection">
         <div
@@ -157,7 +182,7 @@
 
               <div class="flex flex-row items-center justify-between">
                 <button
-                  class="rounded-full text-preset-6 text-neutral900 px-4 py-2 outline outline-1 outline-neutral200 hover:bg-red700 hover:text-neutral0 hover:outline-none dark:text-neutral0 dark:outline-neutral600 hover:dark:text-neutral900 hover:dark:outline-none"
+                  class="remove-btn rounded-full text-preset-6 text-neutral900 px-4 py-2 outline outline-1 outline-neutral200 hover:bg-red700 hover:text-neutral0 hover:outline-none dark:text-neutral0 dark:outline-neutral600 hover:dark:text-neutral900 hover:dark:outline-none"
                 >
                   Remove
                 </button>
