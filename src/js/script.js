@@ -25,6 +25,7 @@ const moonSvgPath =
 let states = {
   filterState: "all",
   theme: "",
+  isTouchDeviceDetected: false,
 };
 
 // HELPER FUNCTIONS
@@ -356,6 +357,42 @@ function hidePopupAlert() {
   }
 }
 
+function clearHoverEffects() {
+  filterAll.classList.remove(
+    "hover:opacity-60",
+    "hover:shadow-none",
+    "dark:hover:opacity-100",
+    "dark:hover:shadow-md",
+    "dark:hover:bg-neutral600"
+  );
+  filterActive.classList.remove(
+    "hover:opacity-60",
+    "hover:shadow-none",
+    "dark:hover:opacity-100",
+    "dark:hover:shadow-md",
+    "dark:hover:bg-neutral600"
+  );
+  filterInactive.classList.remove(
+    "hover:opacity-60",
+    "hover:shadow-none",
+    "dark:hover:opacity-100",
+    "dark:hover:shadow-md",
+    "dark:hover:bg-neutral600"
+  );
+
+  themeToggleBtn.classList.remove(
+    "hover:bg-neutral300",
+    "dark:hover:bg-neutral600"
+  );
+}
+
+function mobileDeviceDetected() {
+  if (!states.isTouchDeviceDetected) {
+    clearHoverEffects();
+    states.isTouchDeviceDetected = true;
+  }
+}
+
 // ONLOAD
 window.onload = async function onLoad() {
   document.documentElement.classList.contains("dark")
@@ -427,3 +464,5 @@ popupAlertSection.addEventListener("click", e => {
     hidePopupAlert();
   }
 });
+
+document.addEventListener("touchstart", mobileDeviceDetected);
