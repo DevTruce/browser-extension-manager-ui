@@ -123,7 +123,6 @@ async function fetchJsonData(url) {
 
 // dynamically build html needed for card components
 function generateCardHTML(imagePath, name, description, isActive, i) {
-  console.log(states.theme);
   const cardHTML = `<div
               class="card flex flex-col rounded-2xl bg-neutral0 p-5 justify-between space-y-12 outline outline-1 outline-neutral200 shadow-md overflow-scroll dark:bg-neutral800 dark:outline-neutral600" data-id="${i}" data-state="${
     isActive ? "active" : "inactive"
