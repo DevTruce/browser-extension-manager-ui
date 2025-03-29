@@ -29,10 +29,10 @@
 
 ## Screenshots
 
-[![Extension Manager Light Desktop Screen Shot][product-screenshot1]](product-link)
 [![Extension Manager Dark Desktop Screen Shot][product-screenshot2]](product-link)
-[![Extension Manager Light Mobile Screen Shot][product-screenshot3]](product-link)
 [![Extension Manager Dark Mobile Screen Shot][product-screenshot4]](product-link)
+[![Extension Manager Light Desktop Screen Shot][product-screenshot1]](product-link)
+[![Extension Manager Light Mobile Screen Shot][product-screenshot3]](product-link)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -72,8 +72,8 @@ Email: [DevTruce@Outlook.com]()
 
 [product-screenshot1]: ./src/images/desktopLight.png
 [product-screenshot2]: ./src/images/desktopDark.png
-[product-screenshot3]: ./src/images/mobileLight.png
-[product-screenshot4]: ./src/images/mobileDark.png
+[product-screenshot3]: ./src/images/mobileLight.jpeg
+[product-screenshot4]: ./src/images/mobileDark.jpeg
 [product-link]: https://devtruce.github.io/browser-extension-manager-ui/
 
 <!-- ## Tech & Tools ## -->
