@@ -389,6 +389,7 @@ function mobileDeviceDetected() {
   if (!states.isTouchDeviceDetected) {
     clearHoverEffects();
     states.isTouchDeviceDetected = true;
+    document.removeEventListener("touchstart", mobileDeviceDetected);
   }
 }
 
@@ -464,4 +465,5 @@ popupAlertSection.addEventListener("click", e => {
   }
 });
 
+// Handle Removing Btn Hover Effects on Touch Screen Devices
 document.addEventListener("touchstart", mobileDeviceDetected);
