@@ -18,7 +18,7 @@
 <h3 align="center">Browser Extension Manager UI</h3>
 
   <p align="center">
-    completed frontend mentor challenge
+    A sleek and responsive extension manager landing page.
     <br />
     <br />
     <a href="https://devtruce-browser-extension.netlify.app//" target="_blank">View Demo</a>
